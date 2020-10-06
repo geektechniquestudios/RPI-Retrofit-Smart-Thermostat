@@ -1,14 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {RNFluidicSlider} from 'react-native-fluidic-slider';
 import LinearGradient from 'react-native-linear-gradient';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
 
 const App: () => React$Node = () => {
   const [temperature, setTemperature] = useState(70); //
