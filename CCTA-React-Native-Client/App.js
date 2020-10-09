@@ -1,26 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import {RNFluidicSlider} from 'react-native-fluidic-slider';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
-// import {scaleLinear} from 'd3-scale';
+import {scaleLinear} from 'd3-scale';
+import SpinnerContainer from './components/SpinnerContainer';
+import * as Progress from 'react-native-progress';
 
-// const tipColor = scaleLinear()
-//   .domain([-11, -2, 0, 11])
-//   .range(['#03fcf4', '#ccfaff', '#f4fa9d', '#de3e26']);
+const tipColor = scaleLinear()
+  .domain([-11, -2, 0, 11])
+  .range(['#03fcf4', '#ccfaff', '#f4fa9d', '#de3e26']);
 
 const App: () => React$Node = () => {
   const [temperature, setTemperature] = useState(70); //
-  const [bubbleColor, setBubbleColor] = useState('red'); //tipColor(temperature - 71));
-
-  // const [barColor, setBarColor] = useState(tipColor(temperature - 69));
-  // useEffect(() => fetchTemp());
+  const [bubbleColor, setBubbleColor] = useState('black'); //tipColor(temperature - 71));
+  const [isLoading, setIsLoading] = useState(true);
+  const [barColor, setBarColor] = useState(tipColor(temperature - 69));
+  useEffect(() => fetchTemp(), [isLoading]);
 
   function fetchTemp() {
-    fetch('10.0.0.6:8080/get_temperature') //get temp from spring boot server
+    console.log('fetching temperature from server');
+    fetch('http://10.0.0.6:8080/get_temperature') //get temp from spring boot server
       .then((res) => res.json())
       .then((data) => {
+        console.log('fetching temperature');
         setTemperature(data.temperature);
+        console.log(`fetched temperature ${data.temperature}`);
+        setIsLoading(false);
       })
-      .catch((e) => fetchTemp());
+      .catch((e) => alert(e)); //(e) => fetchTemp());
   }
 
   function handleNewTemp(position) {
@@ -62,16 +68,28 @@ const App: () => React$Node = () => {
     <>
       <View style={styles.main}>
         {/* <Text>{tipColor(-4)}</Text> */}
-        <RNFluidicSlider
-          min={60}
-          max={80}
-          initialPosition={(temperature - 60) / 20}
-          bubbleColor={bubbleColor}
-          //bubbleColor={rgbToHex(tipColor(-4))} //make same as bg
-          // barColor={this.barColor} //add temp color func
-          bubbleTextColor="white"
-          endTracking={(position) => handleNewTemp(position)}
-        />
+        {isLoading ? (
+          //<Text style={styles.text}>loading...</Text>
+          <Progress.Bar
+            borderWidth={0}
+            height={20}
+            color={'white'}
+            indeterminate={true}
+            indeterminateAnimationDuration={3000}
+            width={200}
+          />
+        ) : (
+          <RNFluidicSlider
+            min={60}
+            max={80}
+            initialPosition={(temperature - 60) / 20}
+            bubbleColor={bubbleColor}
+            // bubbleColor={rgbToHex(tipColor(8))} //make same as bg
+            barColor={'white'} //add temp color func
+            bubbleTextColor="white"
+            endTracking={(position) => handleNewTemp(position)}
+          />
+        )}
       </View>
     </>
   );
@@ -83,6 +101,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     backgroundColor: 'black',
+  },
+  text: {
+    color: 'white',
   },
 });
 

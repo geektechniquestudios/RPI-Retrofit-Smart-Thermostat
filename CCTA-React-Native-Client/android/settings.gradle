@@ -1,4 +1,8 @@
 rootProject.name = 'ThermostatReactNative'
+include ':@react-native-community_art'
+project(':@react-native-community_art').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/art/android')
+include ':@react-native-community_art'
+project(':@react-native-community_art').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/art/android')
 include ':react-native-fluidic-slider'
 project(':react-native-fluidic-slider').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fluidic-slider/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
