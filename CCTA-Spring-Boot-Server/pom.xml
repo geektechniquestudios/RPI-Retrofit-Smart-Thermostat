@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.geek</groupId>
     <artifactId>ccta</artifactId>
-    <version>0.3.2</version>
+    <version>1.0.0</version>
     <name>ccta</name>
     <description>web server for controlling the thermostat</description>
 

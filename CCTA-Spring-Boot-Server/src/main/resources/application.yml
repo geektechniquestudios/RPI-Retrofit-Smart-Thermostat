@@ -1,0 +1,4 @@
+#considering making app timings configurable, may come in the future
+#project-config:
+#  debounce: 600
+#  countdown-max: 10
