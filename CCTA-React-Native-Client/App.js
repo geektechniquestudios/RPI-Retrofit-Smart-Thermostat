@@ -20,7 +20,7 @@ const App: () => React$Node = () => {
         console.log(`fetched temperature ${data.temperature}`);
         setIsLoading(false);
       })
-      .catch((e) => alert(e)); //(e) => fetchTemp());
+      .catch((e) => alert(e)); //(e) => fetchTemp()); // catch could be filled out more
   }
 
   function handleNewTemp(position) {
