@@ -1,9 +1,11 @@
-### Actively writing now
-
 # RPI-Retrofit-Smart-Thermostat 
 ### (CCTA/ClimateControlThermostatApplication)
-
 ###### This multi-tier collection of applications is meant to work on a raspberry pi 0w that controls an older non-smart thermostat, but any other pi would likely work just fine.
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
+
+
+## [Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
 [gif of thermostat screenshot] @todo
 
@@ -32,7 +34,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
   </summary>
  <br>
  
- If you'd rather do the installation more manually, you can run each command as it suits your needs
+ In case you'd rather individually install your dependencies:
  
  
  Don't forget to ```sudo apt update``` first
