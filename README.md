@@ -31,7 +31,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 
  <details>
   <summary>
-   Alternative Longer Setup 
+   Advanced Setup 
   </summary>
  <br>
  
