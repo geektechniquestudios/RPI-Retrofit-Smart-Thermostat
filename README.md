@@ -8,7 +8,7 @@
 ## [Click for a Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
 [![](react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
-[![](react-native-demo.gif)]
+![](react-native-demo.gif)
 
 [img of thermostat being used to update temp] @todo
 
