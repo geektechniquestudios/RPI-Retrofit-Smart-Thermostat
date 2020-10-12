@@ -5,9 +5,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 
 
-## [Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
+## [Click for a Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
-[gif of thermostat screenshot] @todo
+[![](react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
 [img of thermostat being used to update temp] @todo
 
