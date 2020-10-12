@@ -79,7 +79,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
  </details> 
 
 
-[](dataflow.png)
+![](dataflow.png)
 
 [link to video to come]
 
