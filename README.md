@@ -3,7 +3,7 @@
 # RPI-Retrofit-Smart-Thermostat 
 ### (CCTA/ClimateControlThermostatApplication)
 
-###### This multi-tier collection of applications is meant to work on a raspberry pi 0w, but any other pi would likely work just fine.
+###### This multi-tier collection of applications is meant to work on a raspberry pi 0w that controls an older non-smart thermostat, but any other pi would likely work just fine.
 
 [gif of thermostat screenshot] @todo
 
