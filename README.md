@@ -31,7 +31,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 
  <details>
   <summary>
-   Alternative Longer Setup 
+   Advanced Setup (optional alternative)
   </summary>
  <br>
  
@@ -86,7 +86,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 
 [link to video to come]
 
-While there are already a couple of rpi thermostats out there, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so *you can easily build any service to communicate with the thermostat*. The Rest API is exceedingly simple and easy to use. The interface is superficial in that it controls the older thermostat by simulating a button press.
+While rpi thermostats have been done before, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with the thermostat**. The API is exceedingly simple and easy to use. Two relays superficially control the older thermostat by simulating a button press.
 
 As this is still a WIP, the code is based on my LAN subnet of(10.255.255.255) with my pi having the reserved address 10.0.0.6. Yours might be (192.168.255.255) or something else, so you may have to change the ip addresses I use in my code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
  
