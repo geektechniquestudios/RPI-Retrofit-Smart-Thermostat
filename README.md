@@ -94,9 +94,25 @@ As this is still a WIP, this system operates on the pretense that your LAN route
 
 While figuring out what GPIO pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
-![I mounted the RPI in a plastic box](rpi0w-pic.jpg) [I mounted the box in the wall behind the thermostat]
-
 Once you have everything installed, restart your pi. You should be able to access the pi over your LAN by typing 10.0.0.6 into a web browser. As a convenience you can change this to ```thermostat/``` if your router supports local DNS; alternatively, use [dnsmasq](https://help.ubuntu.com/community/Dnsmasq).
+
+
+## How to Physically install
+
+[image of wiring](thermostat-wiring.jpg)
+
+AC units have a 24v AC line(the red wire) and a continuous ground (usually black). You can get a transformer for 5 or 10 dollars on Amazon. I bought [this one](https://www.amazon.com/gp/product/B00SO4T7IU/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
+
+![](rpi0w-pic.jpg) ![](behind-wall.gif)
+
+Fortunately my bathroom mirror leads directly to the thermostat, so that dictated the size of the plastic box I'm using in the above image. The pi changes the temperature by shorting the connection that the button normally bridges when depressed.
+
+## More About This Software
+
+- There is a 10 second debounce on the spring boot server. That means any input you give the thermostat takes a moment to execute. You can change this value in the spring boot thermostat controller if you want it to be snappier.
+
+- The react native app is very simple and easy to modify. It is only about 80 lines of code and serves more as a proof of concept, whereas I actually use the react web client on a daily basis. Feel free to make changes or improvements. I invite collaboration.
+
 
 ###### [API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
 ###### *google home action integration soon to come*
