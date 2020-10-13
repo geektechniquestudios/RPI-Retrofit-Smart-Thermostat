@@ -7,13 +7,15 @@
 
 ## [Click for a Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
+While this isn't the first rpi thermostat, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
+
 [![](react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 ![](react-native-demo.gif)
 
 [img of thermostat being used to update temp] @todo
 
 
-## Installation guide
+## Installation Guide
 
  <details>
   <summary>
@@ -81,15 +83,20 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
  
  </details> 
 
+## How to Use This Software
 
 ![](dataflow.png)
 
 [link to video to come]
 
-While rpi thermostats have been done before, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with the thermostat**. The API is exceedingly simple and easy to use. Two relays superficially control the older thermostat by simulating a button press.
 
-As this is still a WIP, the code is based on my LAN subnet of(10.255.255.255) with my pi having the reserved address 10.0.0.6. Yours might be (192.168.255.255) or something else, so you may have to change the ip addresses I use in my code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
- 
+As this is still a WIP, the code operates on the pretense that your LAN subnet is (10.255.255.255) with the pi having the reserved address 10.0.0.6. Yours might be (192.168.255.255) or something else, so you may have to change the ip addresses in the code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
 
+While figuring out what gpio pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. This code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
-*google home action integration soon to come*
+[img of box] [gif of installed box]
+
+Once you have everything installed, restart your pi. You should be able to access the pi over your lan by typing 10.0.0.6 into a web browser. As a convience you can change this to ```thermostat/``` if your router supports local dns; alternatively use [dnsmasq](https://help.ubuntu.com/community/Dnsmasq).
+
+###### [API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
+###### *google home action integration soon to come*
