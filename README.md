@@ -7,7 +7,7 @@
 
 ## [Click for a Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 
-While this isn't the first rpi thermostat, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
+While this isn't the first RPI thermostat, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
 
 [![](react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 ![](react-native-demo.gif)
@@ -70,7 +70,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
  
  ```npm run-script build```
 
- If you'd like the pi to automatically start the spring boot and react servers on boot, you'll probably want to to add them to a crontab. You can do that by typing
+ If you'd like the pi to automatically start the spring boot and react servers on boot, you'll probably want to add them to a crontab. You can do that by typing
  
   ```crontab -e```
  
@@ -90,13 +90,13 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 [link to video to come]
 
 
-As this is still a WIP, this system operates on the pretense that your LAN router ip address is 10.0.0.1 with the pi having the reserved address 10.0.0.6. Your LAN ip might be 192.168.1.1 or something else, so you may have to change the ip addresses in the code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
+As this is still a WIP, this system operates on the pretense that your LAN router IP address is 10.0.0.1 with the pi having the reserved address 10.0.0.6. Your LAN IP might be 192.168.1.1 or something else, so you may have to change the IP addresses in the code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
 
-While figuring out what gpio pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
+While figuring out what GPIO pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
-![I mounted the rpi in a plastic box](rpi0w-pic.jpg) [I mounted the box in the wall behind the thermostat]
+![I mounted the RPI in a plastic box](rpi0w-pic.jpg) [I mounted the box in the wall behind the thermostat]
 
-Once you have everything installed, restart your pi. You should be able to access the pi over your lan by typing 10.0.0.6 into a web browser. As a convience you can change this to ```thermostat/``` if your router supports local dns; alternatively use [dnsmasq](https://help.ubuntu.com/community/Dnsmasq).
+Once you have everything installed, restart your pi. You should be able to access the pi over your LAN by typing 10.0.0.6 into a web browser. As a convenience you can change this to ```thermostat/``` if your router supports local DNS; alternatively, use [dnsmasq](https://help.ubuntu.com/community/Dnsmasq).
 
 ###### [API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
 ###### *google home action integration soon to come*
