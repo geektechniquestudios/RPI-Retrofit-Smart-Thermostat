@@ -90,11 +90,11 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 [link to video to come]
 
 
-As this is still a WIP, the code operates on the pretense that your LAN subnet is (10.255.255.255) with the pi having the reserved address 10.0.0.6. Yours might be (192.168.255.255) or something else, so you may have to change the ip addresses in the code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
+As this is still a WIP, this system operates on the pretense that your LAN router ip address is 10.0.0.1 with the pi having the reserved address 10.0.0.6. Your LAN ip might be 192.168.1.1 or something else, so you may have to change the ip addresses in the code to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
 
-While figuring out what gpio pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. This code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
+While figuring out what gpio pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
-[img of box] [gif of installed box]
+![I mounted the rpi in a plastic box](rpi0w-pic.jpg) [I mounted the box in the wall behind the thermostat]
 
 Once you have everything installed, restart your pi. You should be able to access the pi over your lan by typing 10.0.0.6 into a web browser. As a convience you can change this to ```thermostat/``` if your router supports local dns; alternatively use [dnsmasq](https://help.ubuntu.com/community/Dnsmasq).
 
