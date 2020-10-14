@@ -64,11 +64,11 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
      
      ```sudo apt install wiringpi```
 
- You'll need to build the react project before serving it. You can do that by navigating into the ccta-react-client folder and running
+You'll need to build the react project before serving it. You can do that by navigating into the ccta-react-client folder and running
  
  ```npm run-script build```
 
- If you'd like the pi to automatically start the spring boot and react servers on boot, you'll probably want to add them to a crontab. You can do that by typing
+If you'd like the pi to automatically start the spring boot and react servers on boot, you'll probably want to add them to a crontab. You can do that by typing
  
   ```crontab -e```
  
@@ -85,8 +85,6 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 
 ![](readme-images/dataflow.png)
 
-[link to video to come]
-
 
 As this is still a WIP, this system operates on the pretense that your pi has the reserved address `10.0.0.6`. Your LAN router IP might be 192.168.1.1 or something else. If you can't reserve `10.0.0.6` for your pi, you may have to change the IP addresses in code or change your local ip configuration to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
 
@@ -101,7 +99,7 @@ Once you have everything installed and your IP address reserved, restart your pi
 
 AC units have a 24v AC wire (red | **R**) and a common ground (black | **C**). You can get a transformer to power the pi for 5 or 10 dollars on Amazon. I bought [this one](https://www.amazon.com/gp/product/B00SO4T7IU/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
 
-<img src="readme-images/rpi0w-pic.jpg" align="left">
+![](readme-images/rpi0w-pic.jpg)
 
 Fortunately removing a bathroom mirror leads directly into the wall behind my thermostat, dictating the size of the plastic box I'm using in the above image. The pi changes the temperature by shorting the connection that the button normally bridges when depressed.
 
