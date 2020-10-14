@@ -103,7 +103,7 @@ AC units have a 24v AC wire (red | **R**) and a common ground (blue or black | *
 
 ![](readme-images/behind-wall.gif)
 
-Fortunately removing a bathroom mirror leads directly into the wall behind my thermostat, dictating the size of the plastic box I'm using in the above image. The pi changes the temperature by shorting the circuit that the button normally bridges when pressed.
+Fortunately removing a bathroom mirror leads directly into the wall behind my thermostat, dictating the size of the plastic box. The pi changes the temperature by shorting the circuit that the button normally bridges when pressed.
 
 
 ## Notes About This Software
