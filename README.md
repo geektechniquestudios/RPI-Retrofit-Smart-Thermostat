@@ -11,7 +11,9 @@ While a raspberry pi thermostat isn't exactly a novel idea, this particular proj
 ![](readme-images/react-native-demo.gif)
 
 ---
-## [Click for a Live Demo](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
+
+## [:thermometer:Click for a Live Demo:thermometer:](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
+
 ---
 
 ![](readme-images/irl-demo.gif)
@@ -105,7 +107,7 @@ AC units have a 24v AC wire (red | **R**) and a common ground (blue or black | *
 
 ![](readme-images/behind-wall.gif)
 
-Fortunately removing a bathroom mirror leads directly into the wall behind my thermostat, dictating the size of the plastic box. The pi changes the temperature by shorting the circuit that the button normally bridges when pressed.
+Fortunately, removing a bathroom mirror leads directly into the wall behind my thermostat. The pi changes the temperature by shorting the circuit that the button normally bridges when pressed.
 
 
 ## Notes About This Software
