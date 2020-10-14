@@ -11,7 +11,6 @@ While this isn't the first RPI thermostat, I haven't seen one quite like what I'
 
 [![](readme-images/react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 ![](readme-images/react-native-demo.gif)
-
 ![](readme-images/irl-demo.gif)
 
 
