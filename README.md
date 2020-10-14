@@ -9,8 +9,8 @@
 
 While this isn't the first RPI thermostat, I haven't seen one quite like what I've made here. This project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
 
-[![](react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
-![](react-native-demo.gif)
+[![](readme-images/react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
+![](readme-images/react-native-demo.gif)
 
 [img of thermostat being used to update temp] @todo
 
@@ -83,7 +83,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
 
 ## How to Use This Software
 
-![](dataflow.png)
+![](readme-images/dataflow.png)
 
 [link to video to come]
 
@@ -97,11 +97,11 @@ Once you have everything installed and your IP address reserved, restart your pi
 
 ## How to Physically Install
 
-![image of wiring](thermostat-wiring.jpg)
+![](readme-images/thermostat-wiring.jpg)
 
 AC units have a 24v AC line(the red wire | **R**) and a common ground (usually black | **C**). You can get a transformer for 5 or 10 dollars on Amazon. I bought [this one](https://www.amazon.com/gp/product/B00SO4T7IU/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
 
-![](rpi0w-pic.jpg) ![](behind-wall.gif)
+![](readme-images/rpi0w-pic.jpg) ![](readme-images/behind-wall.gif)
 
 Fortunately removing a bathroom mirror leads directly into the wall behind my thermostat, dictating the size of the plastic box I'm using in the above image. The pi changes the temperature by shorting the connection that the button normally bridges when depressed.
 
