@@ -97,7 +97,7 @@ Once you have everything installed and your IP address reserved, restart your pi
 
 ## How to Physically Install
 
-[image of wiring](thermostat-wiring.jpg)
+![image of wiring](thermostat-wiring.jpg)
 
 AC units have a 24v AC line(the red wire | **R**) and a common ground (usually black | **C**). You can get a transformer for 5 or 10 dollars on Amazon. I bought [this one](https://www.amazon.com/gp/product/B00SO4T7IU/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
 
@@ -113,4 +113,4 @@ Fortunately removing a bathroom mirror leads directly into the wall behind my th
 
 
 ###### [Swagger API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
-###### *google home integration and possibly a scheduling microservice soon to come*
+###### *google home integration soon to come*
