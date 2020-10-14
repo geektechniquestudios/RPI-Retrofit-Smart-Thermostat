@@ -12,7 +12,7 @@ While a raspberry pi thermostat isn't exactly a novel idea, this particular proj
 
 ---
 
-## [:thermometer:Click for a Live Demo:thermometer:](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
+## <h2 align="center"> [:thermometer:Click for a Live Demo:thermometer:](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/) </h2>
 
 ---
 
