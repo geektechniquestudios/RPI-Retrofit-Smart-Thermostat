@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 
 
-While a raspberry pi thermostat isn't exactly a novel idea, this particular project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
+While a raspberry pi thermostat isn't exactly novel, this particular project was designed with extensibility in mind, so **you can easily build any service to communicate with your thermostat**. The [API](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature) is exceedingly simple and easy to use. Two relays superficially control an older thermostat by simulating button presses.
 
 [![](readme-images/react-demo.gif)](https://5f84069fe6479b37533defb2--stoic-fermi-00dc16.netlify.app/)
 ![](readme-images/react-native-demo.gif)
@@ -121,5 +121,5 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
 
 ##### *Soon to come*
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; google home integration
-   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a scheduling microservice
+   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scheduling
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
