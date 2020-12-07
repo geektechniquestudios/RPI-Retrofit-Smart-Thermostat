@@ -119,7 +119,7 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
 
 ##### [Swagger API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
 
-##### *Soon to come*
+##### *Todo/Wishlist*
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; google home integration
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scheduling
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
