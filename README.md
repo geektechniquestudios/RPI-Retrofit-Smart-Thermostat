@@ -123,3 +123,4 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; google home integration
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scheduling
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
+   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose
