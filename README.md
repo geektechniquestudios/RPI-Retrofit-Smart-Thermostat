@@ -33,6 +33,8 @@ Pasting the snippet below into a terminal on the pi will clone this repo into yo
 sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest
  && npm i -g serve --save && cd ~ && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar\n@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab -' 
 ```
+
+If any of the steps in that terminal command fail, you'll want to delete the folder it made from cloning this repo. You can do that by typing `rm -r ~/RPI-Retrofit-Smart-Thermostat` on the pi. If you need to rerun the command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated from running the setup script. 
 	
  </details>
 
