@@ -60,6 +60,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
   - npm	  
   	  
      ```sudo apt install npm```
+     
      ```npm i -g npm@latest```
      
   - serve
@@ -71,6 +72,7 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
      ```sudo apt install wiringpi```
 
 You'll need to build the react project before serving it. You can do that by navigating into the ccta-react-client folder and running
+ 
  ```npm i ```
  
  ```npm run-script build```
