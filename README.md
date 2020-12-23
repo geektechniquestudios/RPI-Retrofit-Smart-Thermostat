@@ -27,13 +27,29 @@ While a raspberry pi thermostat isn't exactly novel, this particular project was
   </summary>
  <br>
 
-Pasting the snippet below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab for the root user to launch both the spring boot server and react server start on boot. 
+Pasting the snippet below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab for the root user to launch both the spring boot server and react server start on boot. Ensure that you've opened a fresh terminal and you're working directory is `~/`
 
 ```console
-sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save && cd ~ && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar\n@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab -' 
+sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
 ```
 
-If any of the steps in that terminal command fail, you'll want to delete the folder it made from cloning this repo. You can do that by typing `rm -r ~/RPI-Retrofit-Smart-Thermostat` on the pi. If you need to rerun the command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated from running the setup script. 
+If there were no errors, you're done with the software setup. If you experienced any issues, keep reading this section.
+
+If you need to rerun the command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
+
+If you get a message like 
+
+> no crontab for pi
+
+then you need to create a crontab file by typing `crontab -e`. It'll open in your default terminal editor. Ensure the following lines are at the end of the crontab.
+
+ ```console
+ @reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar
+ @reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build
+ ```
+ 
+ Save, quit, and restart the pi. If you have any additional issues, please feel free to open an issue on this project or shoot me a message. I'll try to respond in a timely fashion.
+
 	
  </details>
 
