@@ -27,13 +27,13 @@ While a raspberry pi thermostat isn't exactly novel, this particular project was
   </summary>
  <br>
 
-Pasting the snippet below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab to launch both the spring boot server and react server on boot. If you don't know what some of that means, don't worry about it too much. Ensure that you've opened a fresh terminal and you're working directory is `~/`
+Pasting the line below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab to launch both the spring boot server and react server on boot, which is all the software setup required.
 
 ```console
 sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
 ```
 
-If there were no errors, you're done with the software setup. If you experienced any issues, keep reading this section.
+If there were no errors, you're done with the software setup and can move onto the next section. If you experienced any issues, keep reading this section for troubleshooting advice.
 
 If you need to rerun the command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
 
