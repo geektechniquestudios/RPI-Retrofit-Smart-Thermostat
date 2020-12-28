@@ -130,14 +130,15 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose
    
-   
+
+ #### Troubleshooting
+
  <details>
   <summary>
-   Troubleshooting
+   If "Easy Setup" fails
   </summary>
  <br>
 
-### If "Easy Setup" fails
 
 If you need to rerun the easy setup command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
 
@@ -154,11 +155,18 @@ then you need to create a crontab file by typing `crontab -e`. It'll open in you
  
 Save, quit, and restart the pi. If you have any additional issues, please feel free to open an issue on this project or shoot me a message. I'll try to respond in a timely fashion.
 
+</details>
 
-## If your relay doesn't work
+
+ <details> 
+  <summary>
+    If your relays don't work
+  </summary>
+ <br>
 
 The relays I used for this project are closed circuit by default. If you need or want to use relays that work in the opposite fashion, take a deep breath and rub your eyes. You can look in the Spring Boot Server and find the `TemperatureController.java` file in the src folder. Invert the values of the pin states on lines 19, 23, 121, 123, 132, and 134. To be extra clear, on the aforementioned lines, everywhere it says `PinState.LOW`, or `PinState.HIGH`, exchange one for the other. Rebuild the jar file with `mvn clean install` in the project directory. Then send the generated jar file to the pi directory `/home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar`, finally restart the pi. If this seems like a lot, send me a message and I'll do my best to help. If anyone asks me, I'll probably just build another jar file to make it easier. HMU, or I won't know I need to get on this, although I will eventually get to it.
 
 </details>
+
 
 Thanks for checking out my work. I really appreciate any engagement!
