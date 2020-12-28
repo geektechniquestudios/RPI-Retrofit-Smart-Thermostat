@@ -33,7 +33,7 @@ Pasting the line below into a terminal on the pi will clone this repo into your 
 sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
 ```
 
-And you're done with the software setup! If you experienced any issues, check out the [troubleshooting](https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat/blob/master/README.md#troubleshooting) section at the bottom of the readme.
+If you experienced any issues, check out the [troubleshooting](https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat/blob/master/README.md#troubleshooting) section at the bottom of the readme.
 	
  </details>
 
