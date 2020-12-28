@@ -33,23 +33,7 @@ Pasting the line below into a terminal on the pi will clone this repo into your 
 sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
 ```
 
-If there were no errors, you're done with the software setup and can move onto the next section. If you experienced any issues, keep reading this section for troubleshooting advice.
-
-If you need to rerun the command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
-
-If you get a message like 
-
-> no crontab for pi
-
-then you need to create a crontab file by typing `crontab -e`. It'll open in your default terminal editor. Ensure the following lines are at the end of the crontab.
-
- ```console
- @reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar
- @reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build
- ```
- 
- Save, quit, and restart the pi. If you have any additional issues, please feel free to open an issue on this project or shoot me a message. I'll try to respond in a timely fashion.
-
+And you're done with the software setup! If you experienced any issues, check out the troubleshooting section at the bottom of the readme.
 	
  </details>
 
@@ -138,9 +122,6 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
 
 ##### - The react native app is very simple and easy to modify. It is only about 80 lines of code and serves more as a proof of concept, whereas I use the reactjs web client on a daily basis. 
 
-##### - The relays I used for this project are closed circuit by default. If you need or want to use relays that work in the opposite fashion, take a deep breath and rub your eyes. You can look in the Spring Boot Server and find the `TemperatureController.java` file in the src folder. Invert the values of the pin states on lines 19, 23, 121, 123, 132, and 134. To be extra clear, on the aforementioned lines, everywhere it says `PinState.LOW`, or `PinState.HIGH`, exchange one for the other. Rebuild the jar file with `mvn clean install` in the project directory. Then send the generated jar file to the pi directory `/home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar`, finally restart the pi. If this seems like a lot, send me a message and I'll do my best to help. If anyone asks me, I'll probably just build another jar file to make it easier. HMU, or I won't know I need to get on this, although I will eventually get to it.
-
-
 ##### [Swagger API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
 
 ##### *Todo/Wishlist*
@@ -149,4 +130,35 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose
    
+   
+ <details>
+  <summary>
+   Troubleshooting
+  </summary>
+ <br>
+
+### If "Easy Setup" fails
+
+If you need to rerun the easy setup command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
+
+If you get a message like 
+
+> no crontab for pi
+
+then you need to create a crontab file by typing `crontab -e`. It'll open in your default terminal editor. Ensure the following lines are at the end of the crontab.
+
+ ```console
+ @reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar
+ @reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build
+ ```
+ 
+Save, quit, and restart the pi. If you have any additional issues, please feel free to open an issue on this project or shoot me a message. I'll try to respond in a timely fashion.
+
+
+## If your relay doesn't work
+
+The relays I used for this project are closed circuit by default. If you need or want to use relays that work in the opposite fashion, take a deep breath and rub your eyes. You can look in the Spring Boot Server and find the `TemperatureController.java` file in the src folder. Invert the values of the pin states on lines 19, 23, 121, 123, 132, and 134. To be extra clear, on the aforementioned lines, everywhere it says `PinState.LOW`, or `PinState.HIGH`, exchange one for the other. Rebuild the jar file with `mvn clean install` in the project directory. Then send the generated jar file to the pi directory `/home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar`, finally restart the pi. If this seems like a lot, send me a message and I'll do my best to help. If anyone asks me, I'll probably just build another jar file to make it easier. HMU, or I won't know I need to get on this, although I will eventually get to it.
+
+</details>
+
 Thanks for checking out my work. I really appreciate any engagement!
