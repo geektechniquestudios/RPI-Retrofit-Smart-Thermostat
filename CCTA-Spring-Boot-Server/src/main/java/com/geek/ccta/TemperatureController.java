@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.pi4j.io.gpio.*;
+
 import javax.annotation.PostConstruct;
 
 
@@ -31,18 +32,19 @@ public class TemperatureController {
 
     @Autowired
     public TemperatureController(RedisConfig redisConfig) {
-        this.redisConfig = redisConfig;
+        this.redis = redisConfig;
     }
 
     private int countdown;
     private boolean isBeingChanged = false;
     private int globalRecentTemp;
-    final private RedisConfig redisConfig;
+    final private RedisConfig redis;
 
 
     @PostConstruct
     private void setup() {
-        globalRecentTemp = Integer.parseInt(redisConfig.getSyncCommands().get("most-recent-temperature"));
+        checkForFirstRun();
+        globalRecentTemp = Integer.parseInt(redis.get("most-recent-temperature"));
 
         temperatureUpOutput.setShutdownOptions(true);
         temperatureDownOutput.setShutdownOptions(true);
@@ -64,6 +66,11 @@ public class TemperatureController {
                 updateTemperatureInRedis(++globalRecentTemp);
             }
         });
+    }
+
+    private void checkForFirstRun() {
+        if (redis.get("most-recent-temperature") == null)
+            redis.set("most-recent-temperature", "70");
     }
 
     @CrossOrigin
@@ -102,7 +109,7 @@ public class TemperatureController {
 
     @Synchronized
     private void reconcileDiff(int mostRecentTemperature) throws InterruptedException {
-        int mostRecentlyStoredTemperature = Integer.parseInt(redisConfig.getSyncCommands().get("most-recent-temperature"));
+        int mostRecentlyStoredTemperature = Integer.parseInt(redis.get("most-recent-temperature"));
         log.info("Reconciling temperature difference from {} to {}", mostRecentlyStoredTemperature, mostRecentTemperature);
         while (mostRecentTemperature < mostRecentlyStoredTemperature)
             mostRecentlyStoredTemperature = thermostatDown(mostRecentlyStoredTemperature);
@@ -114,7 +121,7 @@ public class TemperatureController {
 
     private void updateTemperatureInRedis(int adjustment) {
         log.info("New redis temperature: {}", adjustment);
-        redisConfig.getSyncCommands().set("most-recent-temperature", String.valueOf(adjustment));
+        redis.set("most-recent-temperature", String.valueOf(adjustment));
     }
 
     private int thermostatUp(int mostRecentlyStoredTemperature) throws InterruptedException {
