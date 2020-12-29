@@ -27,7 +27,7 @@ While a raspberry pi thermostat isn't exactly novel, this particular project was
   </summary>
  <br>
 
-Pasting the line below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab to launch both the spring boot server and react server on boot, which is all the software setup required.
+Pasting the line below into a fresh terminal on the pi will do all the setup for you. 
 
 ```console
 sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
