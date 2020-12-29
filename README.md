@@ -27,11 +27,14 @@ While a raspberry pi thermostat isn't exactly novel, this particular project was
   </summary>
  <br>
 
-Pasting the snippet below into a terminal on the pi will clone this repo into your "~/" directory, install all dependencies, make a build folder for the react service, and append the crontab for the root user to launch both the spring boot server and react server start on boot. 
+Pasting the line below into a fresh terminal on the pi will do all the software setup for you. 
 
 ```console
-sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g serve --save && cd ~ && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar\n@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab -' 
+sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjdk-8-jre wiringpi nodejs npm git -y && npm i -g npm@latest && npm i -g serve --save' && cd ~ && rm -rf ~/RPI-Retrofit-Smart-Thermostat && git clone https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat && cd /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client && npm i && npm run-script build && (crontab -l ; echo "@reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar") | crontab - && (crontab -l ; echo "@reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build") | crontab - && echo "Success! Restart the pi and your server will be online. You can see it by typing the ip address of the pi into a web browser."
 ```
+
+
+If you experienced any issues, check out the [troubleshooting](https://github.com/geektechniquestudios/RPI-Retrofit-Smart-Thermostat/blob/master/README.md#troubleshooting) section at the bottom of the readme.
 	
  </details>
 
@@ -60,6 +63,8 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
   	  
      ```sudo apt install npm```
      
+     ```npm i -g npm@latest```
+     
   - serve
   	  
      ```sudo npm i -g serve --save```
@@ -69,6 +74,8 @@ sudo bash -c 'apt update -y && apt upgrade -y && apt install redis-server openjd
      ```sudo apt install wiringpi```
 
 You'll need to build the react project before serving it. You can do that by navigating into the ccta-react-client folder and running
+ 
+ ```npm i ```
  
  ```npm run-script build```
 
@@ -103,7 +110,7 @@ Once you have everything installed and your IP address reserved, restart your pi
 ![](readme-images/wiring-diagram.png)
 ![](readme-images/rpi0w-pic.jpg) 
 
-AC units have a 24v AC wire (red | **R**) and a common ground (blue or black | **C**). You can get a transformer to power the pi for 5 or 10 dollars on Amazon. I bought [this one](https://www.amazon.com/gp/product/B00SO4T7IU/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
+AC units have a 24v AC wire (red | **R**) and a common ground (blue or black | **C**). You can get a transformer to power the pi for 5 or 10 dollars on Amazon. I bought [this one](https://amzn.to/34PD66A) (affiliate link) because it has a potentiometer, allowing you to control the output voltage. Pis can be powered by connecting 5v DC power to the respective positive and negative rails of the board.
 
 ![](readme-images/behind-wall.gif)
 
@@ -116,7 +123,6 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
 
 ##### - The react native app is very simple and easy to modify. It is only about 80 lines of code and serves more as a proof of concept, whereas I use the reactjs web client on a daily basis. 
 
-
 ##### [Swagger API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
 
 ##### *Todo/Wishlist*
@@ -124,3 +130,44 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scheduling
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
    ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose
+   
+
+ #### Troubleshooting
+
+ <details>
+  <summary>
+   If "Easy Setup" fails
+  </summary>
+ <br>
+
+
+If you need to rerun the easy setup command after it **successfully** completes, you should check your crontab file by typing `crontab -e`. Ensure you don't have the same commands repeated over and over from running the setup script repeatedly.
+
+If you get a message like 
+
+> no crontab for pi
+
+then you need to create a crontab file by typing `crontab -e`. It'll open in your default terminal editor. Ensure the following lines are at the end of the crontab.
+
+ ```console
+ @reboot java -jar /home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar
+ @reboot sudo serve -l 80 -s /home/pi/RPI-Retrofit-Smart-Thermostat/CCTA-React-Client/build
+ ```
+ 
+Save, quit, and restart the pi. If you have any additional issues, please feel free to open an issue on this project or shoot me a message. I'll try to respond in a timely fashion.
+
+</details>
+
+
+ <details> 
+  <summary>
+    If your relays don't work
+  </summary>
+ <br>
+
+The relays I used for this project are closed circuit by default. If you need or want to use relays that work in the opposite fashion, take a deep breath and rub your eyes. You can look in the Spring Boot Server and find the `TemperatureController.java` file in the src folder. Invert the values of the pin states on lines 19, 23, 121, 123, 132, and 134. To be extra clear, on the aforementioned lines, everywhere it says `PinState.LOW`, or `PinState.HIGH`, exchange one for the other. Rebuild the jar file with `mvn clean install` in the project directory. Then send the generated jar file to the pi directory `/home/pi/RPI-Retrofit-Smart-Thermostat/ccta-1.0.0.jar`, finally restart the pi. If this seems like a lot, send me a message and I'll do my best to help. If anyone asks me, I'll probably just build another jar file to make it easier. HMU, or I won't know I need to get on this, although I will eventually get to it.
+
+</details>
+
+
+Thanks for checking out my work. I really appreciate any engagement!
