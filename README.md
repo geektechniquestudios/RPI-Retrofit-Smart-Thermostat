@@ -97,7 +97,7 @@ If you'd like the pi to automatically start the spring boot and react servers on
 ![](readme-images/dataflow.png)
 
 
-As this is still a WIP, this system operates on the pretense that your pi has the reserved address `10.0.0.6`. Your LAN router IP might be `192.168.1.1` or something else. If you can't reserve `10.0.0.6` for your pi, you may have to change the IP addresses in code or change your local ip configuration to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
+This system operates on the pretense that your pi has the reserved address `10.0.0.6`. Your LAN router IP might be `192.168.1.1` or something else. If you can't reserve `10.0.0.6` for your pi, you may have to change the IP addresses in code or change your local ip configuration to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
 
 While figuring out what GPIO pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
