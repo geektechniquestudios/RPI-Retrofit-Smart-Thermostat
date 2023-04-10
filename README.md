@@ -97,7 +97,7 @@ If you'd like the pi to automatically start the spring boot and react servers on
 ![](readme-images/dataflow.png)
 
 
-This system operates on the pretense that your pi has the reserved address `10.0.0.6`. Your LAN router IP might be `192.168.1.1` or something else. If you can't reserve `10.0.0.6` for your pi, you may have to change the IP addresses in code or change your local ip configuration to get this working in your environment. The ease-of-setup will be drastically improved in future releases.
+This system operates on the pretense that your pi has the reserved address `10.0.0.6`. Your LAN router IP might be `192.168.1.1` or something else. If you can't reserve `10.0.0.6` for your pi, you may have to change the IP addresses in code or change your local ip configuration to get this working in your environment.
 
 While figuring out what GPIO pins to use to control the relay, reference the [pi4j wiring documentation](https://pi4j.com/1.2/pins/model-zerow-rev1.html). It may vary from board to board, so carefully ensure you have the correct wiring. Based on wiringpi's wiring and **not the pi's header numbering**, this code uses ```gpio pin 0``` for temperature down, and ```gpio pin 1``` for temperature up.
 
@@ -124,13 +124,6 @@ Fortunately, removing a bathroom mirror leads directly into the wall behind my t
 ##### - The react native app is very simple and easy to modify. It is only about 80 lines of code and serves more as a proof of concept, whereas I use the reactjs web client on a daily basis. 
 
 ##### [Swagger API reference](https://app.swaggerhub.com/apis/geektechniquestudios/RpiThermostatCCTA/1.0.0#/Temperature/post_update_temperature)
-
-##### *Todo/Wishlist*
-   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; google home integration
-   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scheduling
-   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an options menu in the reactjs service
-   ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose
-   
 
  #### Troubleshooting
 
